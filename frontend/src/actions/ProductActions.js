@@ -31,7 +31,7 @@ import {
 } from "../constans/ProductConstans";
 
 
-export const getProduct= (keyword="",currentPage=1,category) => async (dispatch)=>{
+export const getProduct= (keyword="",currentPage=1,category,color, sizes) => async (dispatch)=>{
   try {
       dispatch({
           type: ALL_PRODUCT_REQUEST
@@ -41,6 +41,12 @@ export const getProduct= (keyword="",currentPage=1,category) => async (dispatch)
       
      if(category){
       link = `/api/v2/products?keyword=${keyword}&page=${currentPage}&category=${category}`;
+     }
+     if(color){
+      link = `/api/v2/products?keyword=${keyword}&page=${currentPage}&color.name=${color}`;
+     }
+     if(sizes){
+      link = `/api/v2/products?keyword=${keyword}&page=${currentPage}&sizes.name=${sizes}`;
      }
       const {data} = await axios.get(link);
 

@@ -28,7 +28,9 @@
   }
   .selectSize{
     display: flex !important;
-    flex-direction: row !important;
+   flex-wrap: wrap; 
+   border: 1px solid black;
+   border-radius: 8px;
 
   }
   .selectSize :active{
@@ -41,12 +43,16 @@
     padding: 8px;
     margin: 5px;
     cursor: pointer;
+    display: flex !important;
+   flex-wrap: wrap;
   }
   /* color */
   .selectColor{
     display: flex !important;
    flex-wrap: wrap;
-
+   border: 1px solid black;
+   border-radius: 8px;
+margin-bottom: 8px;
   }
   .selectColor :active{
     background-color: aqua;
@@ -58,6 +64,8 @@
     padding: 8px;
     margin: 5px;
     cursor: pointer;
+    display: flex !important;
+   flex-wrap: wrap;
   }
   
   .createProductForm > div {

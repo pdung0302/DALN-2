@@ -42,8 +42,11 @@ const accessory = [
   "Kính mắt",
   "Giày nam",
   "Ví",
+];
 
-]
+const colors = ["Trắng", "Xám", "Xanh lục", "Đen", "Đỏ", "Xanh dương","Hồng","Xanh rêu","Màu be","Xanh bơ","Nâu","Kem","Nâu sữa","Hồng tím","Hồng sữa","Cam","Vàng"];
+
+const size = ["S", "M", "L", "XL", "XXL", "XXXL","25","26","27","28","29","30","31","32","34","35","36"];
 
 const Products = ({ match }) => {
   const dispatch = useDispatch();
@@ -51,6 +54,37 @@ const Products = ({ match }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const [category, setCategory] = useState("");
+  const [color, setColor] = useState("");
+  const [sizes, setSizes] = useState("");
+
+  const [openManGirl, setOpenManGirl] = React.useState(false);
+  const handleOpenManGirl= () => {
+    setOpenManGirl(!openManGirl);
+  };
+
+  const [openMan, setOpenMan] = React.useState(false);
+  const handleOpenMan = () => {
+    setOpenMan(!openMan);
+  };
+  const [openWoman, setOpenWoman] = React.useState(false);
+  const handleOpenWoman = () => {
+    setOpenWoman(!openWoman);
+  };
+
+  const [openAccessory, setOpenAccessory] = React.useState(false);
+  const handleOpenAccessory= () => {
+    setOpenAccessory(!openAccessory);
+  };
+
+  const [openColor, setOpenColor] = React.useState(false);
+  const handleOpenColor= () => {
+    setOpenColor(!openColor);
+  };
+
+  const [openSize, setOpenSize] = React.useState(false);
+  const handleOpenSize= () => {
+    setOpenSize(!openSize);
+  };
 
   const { products, loading, error, productsCount, resultPerPage } =
     useSelector((state) => state.products);
@@ -61,14 +95,13 @@ const Products = ({ match }) => {
     setCurrentPage(e);
   };
 
-
   useEffect(() => {
     if (error) {
       alert(error);
       dispatch(clearErrors());
     }
-    dispatch(getProduct(keyword, currentPage, category));
-  }, [dispatch, keyword, currentPage, category, alert, error]);
+    dispatch(getProduct(keyword, currentPage, category, color, sizes));
+  }, [dispatch, keyword, currentPage, category, color,sizes, alert, error]);
 
   return (
     <>
@@ -79,19 +112,20 @@ const Products = ({ match }) => {
           <MetaData title="Sản phẩm" />
           <Header />
           <div>
+            <div style={{ justifyContent: "center", alignItems: "center" }}>
+              <div className="productBanner">
+                <Carousel
+                  style={{
+                    overflow: "hidden",
+                    height: "10vh",
+                  }}
+                >
+                  <img src={bg} className="bgImgi" />
 
-            <div style={{justifyContent:"center", alignItems:"center"}}>
-            <div className="productBanner">
-            <Carousel style={{
-                overflow:"hidden",
-                height:"10vh"
-               }}>
-                 <img src={bg} className="bgImgi"/>
-               
-                 <img src={bg3} className="bgImgi"/>
-                 <img src={bg4} className="bgImgi"/>
-               </Carousel>
-            </div>
+                  <img src={bg3} className="bgImgi" />
+                  <img src={bg4} className="bgImgi" />
+                </Carousel>
+              </div>
             </div>
             {products.length === 0 ? (
               ""
@@ -104,7 +138,7 @@ const Products = ({ match }) => {
                   fontSize: "1.4vmax",
                   fontFamily: "Poppins,sans-serif",
                   margin: "3vmax auto",
-                  color: "rgb(0, 0, 0, 0.7)", 
+                  color: "rgb(0, 0, 0, 0.7)",
                 }}
               >
                 SẢN PHẨM
@@ -123,81 +157,175 @@ const Products = ({ match }) => {
                   border: "1px solid #999",
                   margin: "1vmax",
                   flex: ".177",
+                  display:"flex",
+                  flexDirection:"column",
+                 
                 }}
               >
-                <Typography style={{ fontSize: "1.2vmax", padding: "5px" }}>
+                <Typography style={{ fontSize: "1.2vmax", padding: "5px", textAlign:"center" }}>
                   DANH MỤC
                 </Typography>
-                <ul className="categoryBox">
+
+                {/* <ul className="categoryBox">
                   <li className="category-link" onClick={() => setCategory()}>
                     Tất cả
                   </li>
                   {categories.map((category) => (
-                  <li
-                      className="category-link"
-                      key={category}
-                      onClick={() => setCategory(category)}
-                      type="checkbox"
-                    >
-                    + {category}
-                    </li>
-                  ))}
-                </ul>
-                {/* <Typography style={{fontSize:"1.2vmax",padding:"5px"}}>Thời trang nam</Typography>
-                  <li className="category-link">
-                      My Carts
-                  </li>
-                  <li className="category-link">
-                      Favourites Items
-                  </li>
-                  <li className="category-link">
-                      Go to Checkout
-                  </li> */}
-                <Typography style={{ fontSize: "1.2vmax", padding: "5px" }}>
-                  Thời trang nam
-                </Typography>
-                <ul className="categoryBox">
-                  {styleman.map((category) => (
                     <li
                       className="category-link"
                       key={category}
                       onClick={() => setCategory(category)}
                       type="checkbox"
                     >
-                     + {category}
+                      + {category}
                     </li>
                   ))}
-                </ul>
-                <Typography style={{ fontSize: "1.2vmax", padding: "5px" }}>
-                  Thời trang nữ
-                </Typography>
-                <ul className="categoryBox">
-                  {stylegirl.map((category) => (
-                    <li
-                      className="category-link"
-                      key={category}
-                      onClick={() => setCategory(category)}
-                      type="checkbox"
-                    >
-                     + {category}
-                    </li>
-                  ))}
-                </ul>
-                <Typography style={{ fontSize: "1.2vmax", padding: "5px" }}>
-                  Phụ kiện
-                </Typography>
-                <ul className="categoryBox">
-                  {accessory.map((category) => (
-                    <li
-                      className="category-link"
-                      key={category}
-                      onClick={() => setCategory(category)}
-                      type="checkbox"
-                    >
-                     + {category}
-                    </li>
-                  ))}
-                </ul>
+                </ul> */}
+                <button style={{borderLeft:"none", borderRight:"none",cursor:"pointer"  }} onClick={() => setCategory()}>
+                  {" "}
+                  <Typography style={{ fontSize: "1.2vmax", padding: "5px" }}>
+                  +Tất cả
+                  </Typography>
+                </button>
+               
+                  {/* <ul className="categoryBox">
+                    {categories.map((category) => (
+                      <li style={{borderBottom:"1px solid grey"}}
+                        className="category-link"
+                        key={category}
+                        onClick={() => setCategory(category)}
+                        type="checkbox"
+                      >
+                        + {category}
+                      </li>
+                    ))}
+                  </ul> */}
+                  <button style={{borderLeft:"none", borderRight:"none", borderTop:"none"  }} onClick={handleOpenManGirl}>
+                  {" "}
+                  <Typography style={{ fontSize: "1.2vmax", padding: "5px" }}>
+                  +Thời trang nam, nữ
+                  </Typography>
+                </button>
+                {openManGirl ? (
+                  <ul className="categoryBox">
+                    {categories.map((category) => (
+                      <li style={{borderBottom:"1px solid grey"}}
+                        className="category-link"
+                        key={category}
+                        onClick={() => setCategory(category)}
+                        type="checkbox"
+                      >
+                        + {category}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+          
+                <button style={{borderLeft:"none", borderRight:"none", borderTop:"none"  }} onClick={handleOpenMan}>
+                  {" "}
+                  <Typography style={{ fontSize: "1.2vmax", padding: "5px" }}>
+                  +Thời trang nam
+                  </Typography>
+                </button>
+                {openMan ? (
+                  <ul className="categoryBox">
+                    {styleman.map((category) => (
+                      <li style={{borderBottom:"1px solid grey"}}
+                        className="category-link"
+                        key={category}
+                        onClick={() => setCategory(category)}
+                        type="checkbox"
+                      >
+                        + {category}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+               
+                <button style={{ borderLeft:"none", borderRight:"none",borderTop:"none"}} onClick={handleOpenWoman}>
+                  {" "}
+                  <Typography style={{ fontSize: "1.2vmax", padding: "5px" }}>
+                  +Thời trang nữ
+                  </Typography>
+                </button>
+                {openWoman ? (
+                  <ul className="categoryBox">
+                    {stylegirl.map((category) => (
+                      <li style={{borderBottom:"1px solid grey"}}
+                        className="category-link"
+                        key={category}
+                        onClick={() => setCategory(category)}
+                        type="checkbox"
+                      >
+                        + {category}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+               
+               <button style={{borderLeft:"none", borderRight:"none",borderTop:"none"}} onClick={handleOpenAccessory}>
+                  {" "}
+                  <Typography style={{ fontSize: "1.2vmax", padding: "5px" }}>
+                 +Phụ kiện
+                  </Typography>
+                </button>
+                {openAccessory ? (
+                  <ul className="categoryBox">
+                    {accessory.map((category) => (
+                      <li style={{borderBottom:"1px solid grey"}}
+                        className="category-link"
+                        key={category}
+                        onClick={() => setCategory(category)}
+                        type="checkbox"
+                      >
+                        + {category}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+
+                <button style={{borderLeft:"none", borderRight:"none",borderTop:"none"}} onClick={handleOpenColor}>
+                  {" "}
+                  <Typography style={{ fontSize: "1.2vmax", padding: "5px" }}>
+                    +Tìm kiếm theo màu sắc
+                  </Typography>
+                </button>
+                {openColor ? (
+                  <ul className="categoryBox">
+                    {colors.map((color) => (
+                      <li style={{borderBottom:"1px solid grey"}}
+                        className="category-link"
+                        key={color}
+                        onClick={() => setColor(color)}
+                        type="checkbox"
+                      >
+                        + {color}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+
+<button style={{borderLeft:"none", borderRight:"none",borderTop:"none"}} onClick={handleOpenSize}>
+                  {" "}
+                  <Typography style={{ fontSize: "1.2vmax", padding: "5px" }}>
+                    +Tìm kiếm theo kích thước
+                  </Typography>
+                </button>
+                {openSize ? (
+                  <ul className="categoryBox">
+                    {size.map((sizes) => (
+                      <li style={{borderBottom:"1px solid grey"}}
+                        className="category-link"
+                        key={sizes}
+                        onClick={() => setSizes(sizes)}
+                        type="checkbox"
+                      >
+                        + {sizes}
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+               
               </div>
 
               {products.length === 0 ? (
@@ -237,7 +365,7 @@ const Products = ({ match }) => {
                 justifyContent: "center",
                 alignItems: "center",
                 margin: "6vmax",
-              }} 
+              }}
             >
               <Pagination
                 activePage={currentPage}
