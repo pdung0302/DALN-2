@@ -56,6 +56,15 @@ const ProductDetails = ({ match, history }) => {
     }
     dispatch({ type: NEW_REVIEW_RESET });
   };
+  // Increase quantity
+  const [quantity, setQuantity] = useState(1);
+  let [size, setSize] = useState(product.sizes && product.sizes[0].name);
+  
+  let [color, setColor] = useState( product.color && product.color[0].name);
+  // let [color, setColor] = useState(product.color[0].name
+  // );
+//  console.log(product.sizes[0].name)
+//  console.log(product.color[0].name)
 
   useEffect(() => {
     if (error) {
@@ -74,20 +83,7 @@ const ProductDetails = ({ match, history }) => {
   const [rating, setRating] = useState(0);
   const [comment, setComment] = useState("");
 
-  // Increase quantity
-  const [quantity, setQuantity] = useState(1);
-  let [size, setSize] = useState(
-    product?.sizes?.length > 0 && product.sizes[0].name
-  );
-  // let [size, setSize] = useState(product.sizes[0].name
-  // );
-  
-  let [color, setColor] = useState(
-    product?.color?.length > 0 && product.color[0].name
-  );
-  // let [color, setColor] = useState(product.color[0].name
-  // );
- 
+
   const increaseQuantity = () => {
     if (product.Stock <= quantity) return toast.error("Số lượng sản phẩm có giới hạn!!!");
     const qty = quantity + 1;
@@ -100,6 +96,7 @@ const ProductDetails = ({ match, history }) => {
   };
 
   const addToCartHandler = () => {
+    
     if (product.Stock > 0) {
       dispatch(addItemsToCart(match.params.id, quantity, color, size));
       toast.success("Đã thêm sản phẩm vào giỏ hàng!");
@@ -229,7 +226,7 @@ const ProductDetails = ({ match, history }) => {
                       {product.sizes.map((size) => (
                         <option
                           style={{ fontSize: "1.1vmax", fontWeight: 450 }}
-                          key={size.name}
+                          // key={size.name}
                           value={size.name}
                         >
                           {size.name}
@@ -269,7 +266,7 @@ const ProductDetails = ({ match, history }) => {
                       {product.color.map((color) => (
                         <option
                           style={{ fontSize: "1.1vmax", fontWeight: 450 }}
-                          key={color.name}
+                          // key={color.name}
                           value={color.name}
                         >
                           {color.name}

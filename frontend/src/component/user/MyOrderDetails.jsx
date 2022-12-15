@@ -84,12 +84,18 @@ const MyOrderDetails = ({ match }) => {
                   {/* <span>$ {order.totalPrice && order.totalPrice}</span> */}
                   <span>{currency.format(order.totalPrice && order.totalPrice, {code:"VND"})}</span>
                 </div>
+
+                <div>
+                  <p>Hình thức thanh toán:</p>
+                 
+                  <p style={{fontSize:"1.1vmax", fontWeight:"bold",marginLeft:"4px"}}> {order.paymentMethod}</p>
+                </div>
                
               </div>
 
               <Typography>Trạng thái đơn hàng:</Typography>
               <div className="orderDetailsContainerBox">
-                <div>
+                <div style={{flexDirection: "column",}}>
                   <p
                     className={
                       order.orderStatus && order.orderStatus === "Delivered"
@@ -99,6 +105,14 @@ const MyOrderDetails = ({ match }) => {
                   >
                     {order.orderStatus && order.orderStatus}
                   </p>
+                  
+                  {order.orderStatus && order.orderStatus === "Hủy đơn hàng" ? (
+                    <p  style={{
+                      fontSize: "1.2vmax",
+                      color: "black",
+                      fontWeight:"600"
+                    }}>Quản lý, nhân viên sẽ liên hệ phản hồi qua Email hoặc Số điện thoại của bạn trong thời gian sớm nhất, kính mong quý khách thông cảm!!!</p>
+                  ):(null)}
                 </div>
               </div>
             </div>

@@ -144,7 +144,6 @@ const CreateProduct = ({ history }) => {
     dispatch(createProduct(myForm));
   };
 
-  console.log(images)
   const createProductImagesChange = (e) => {
     const files = Array.from(e.target.files);
 

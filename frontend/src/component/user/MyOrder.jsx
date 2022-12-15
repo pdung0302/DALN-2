@@ -34,13 +34,19 @@ const MyOrder = () => {
       },
     },
     {
+      field: "timeProduct",
+      headerName: "Thời gian",
+      type: "date",
+      minWidth: 150,
+      flex: 0.3,
+    },
+    {
       field: "itemsQty",
       headerName: "Số lượng",
       type: "number",
       minWidth: 150,
       flex: 0.3,
     },
-
     {
       field: "amount",
       headerName: "Số tiền",
@@ -72,6 +78,7 @@ const MyOrder = () => {
       rows.push({
         itemsQty: item.orderItems.length === 0 ? 1 : item.orderItems.length,
         id: item._id,
+        timeProduct: item.createdAt.slice(0, 10),
         status: item.orderStatus,
         amount: item.totalPrice,
       });

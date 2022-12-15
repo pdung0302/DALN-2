@@ -99,13 +99,24 @@ const UpdateOrder = ({ history, match }) => {
                   <Typography>Thanh toán</Typography>
                   <div className="orderDetailsContainerBox">
                     <div>
-                      <p
-                        style={{
-                          color: "green",
-                        }}
-                      >
-                        ĐÃ THANH TOÁN
-                      </p>
+                      {order &&
+                      order.paymentMethod === "Thanh toán khi nhận hàng !" ? (
+                        <p
+                          style={{
+                            color: "red",
+                          }}
+                        >
+                          CHƯA THANH TOÁN
+                        </p>
+                      ) : (
+                        <p
+                          style={{
+                            color: "green",
+                          }}
+                        >
+                          ĐÃ THANH TOÁN
+                        </p>
+                      )}
                       <span>
                         (
                         {order.paidAt &&
@@ -144,17 +155,34 @@ const UpdateOrder = ({ history, match }) => {
                     </div>
                   </div>
                   <Typography>Ghi chú của khách hàng:</Typography>
-                  {order.noteBuy != " " ?(
-                     <div className="orderDetailsContainerBox">
-                     <div style={{backgroundColor:"#d4d4d444", padding:"2vmax", border:"1px solid #30303021", borderRadius:"10px"}}>
-                       <div 
-                         dangerouslySetInnerHTML={{
-                           __html: DOMPurify.sanitize(order.noteBuy),
-                         }}
-                       />
-                     </div>
-                   </div>
-                  ):(<p style={{fontSize:"1vmax", padding:"1.5vmax",marginLeft:".5vmax"}}>Không có ghi chú!!!</p>)}
+                  {order.noteBuy != " " ? (
+                    <div className="orderDetailsContainerBox">
+                      <div
+                        style={{
+                          backgroundColor: "#d4d4d444",
+                          padding: "2vmax",
+                          border: "1px solid #30303021",
+                          borderRadius: "10px",
+                        }}
+                      >
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: DOMPurify.sanitize(order.noteBuy),
+                          }}
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    <p
+                      style={{
+                        fontSize: "1vmax",
+                        padding: "1.5vmax",
+                        marginLeft: ".5vmax",
+                      }}
+                    >
+                      Không có ghi chú!!!
+                    </p>
+                  )}
                 </div>
                 <div className="confirmCartItems">
                   <Typography>Đơn hàng:</Typography>
@@ -167,7 +195,8 @@ const UpdateOrder = ({ history, match }) => {
                             <Link to={`/product/${item.product}`}>
                               {item.name}
                             </Link>{" "}
-                           Size: {item.size && item.size}, Màu: {item.color && item.color}
+                            Size: {item.size && item.size}, Màu:{" "}
+                            {item.color && item.color}
                           </div>
                           <span>
                             {/* {item.quantity} X {currency.format(item.price, {code:"VND"})} ={" "}
@@ -201,7 +230,23 @@ const UpdateOrder = ({ history, match }) => {
                     <select onChange={(e) => setStatus(e.target.value)}>
                       <option value="">Chọn trạng thái</option>
                       {order.orderStatus === "Chờ xác nhận" && (
+                        <>
+                          <option value="Xác nhận đơn hàng">
+                            Xác nhận đơn hàng
+                          </option>
+                          <option value="Hủy đơn hàng">Hủy đơn hàng</option>
+                        </>
+                      )}
+                      {order.orderStatus === "Xác nhận đơn hàng" && (
                         <option value="Đang giao hàng">Giao hàng</option>
+                      )}
+                      {order.orderStatus === "Xác nhận đơn hàng" && (
+                        <option value="Đơn hàng đã đưa đến bưu cục">
+                          Kiện hàng đã đến bộ phận vận chuyển
+                        </option>
+                      )}
+                      {order.orderStatus === "Đơn hàng đã đưa đến bưu cục" && (
+                        <option value="Đang giao hàng">Đang giao hàng</option>
                       )}
 
                       {order.orderStatus === "Đang giao hàng" && (
@@ -219,6 +264,42 @@ const UpdateOrder = ({ history, match }) => {
                   >
                     CẬP NHẬT
                   </Button>
+
+                  {order.orderStatus === "Hủy đơn hàng" ? (
+                    <div
+                      style={{
+                        padding: "10px",
+                        flexDirection: "column",
+                      }}
+                    >
+                      <p
+                        style={{
+                          fontSize: "1.2vmax",
+                          color: "red",
+                        }}
+                      >
+                        Quản lý cần liên hệ và thông báo lí do với khách hàng
+                        qua số điện thoại hoặc Email.
+                      </p>
+                      <p
+                        style={{
+                          fontSize: "1.2vmax",
+                          color: "black",
+                        }}
+                      >
+                        Số điện thoại: 
+                        0{order.shippingInfo && order.shippingInfo.phoneNo}{" "}
+                      </p>
+                      <p
+                        style={{
+                          fontSize: "1.2vmax",
+                          color: "black",
+                        }}
+                      >Email: 
+                      <span>{order.user && order.user.email}</span>
+                    </p>
+                    </div>
+                  ) : null}
                 </form>
               </div>
             </div>

@@ -30,6 +30,7 @@ const Payment = ({ history }) => {
   const payBtn = useRef(null);
 
   const { shippingInfo, cartItems, noteBuy } = useSelector((state) => state.cart);
+  
   const { user } = useSelector((state) => state.user);
   const { error,loading } = useSelector((state) => state.order);
 
@@ -44,6 +45,7 @@ const Payment = ({ history }) => {
     shippingPrice: orderInfo.shippingCharges,
     totalPrice: orderInfo.totalPrice,
     noteBuy: noteBuy,
+    paymentMethod: "Thanh toán bằng thẻ tín dụng !"
 
   };
 

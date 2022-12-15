@@ -27,6 +27,7 @@ import Payment from './component/cart/Payment';
 import {loadStripe} from '@stripe/stripe-js';
 import {Elements} from '@stripe/react-stripe-js';
 import Success from './component/cart/Success';
+import SuccessOrder from './component/cart/SuccessOrder'
 import MyOrder from "./component/user/MyOrder";
 import MyOrderDetails from "./component/user/MyOrderDetails";
 import CommingSoon from "./more/CommingSoon";
@@ -109,6 +110,7 @@ function App() {
          <ProtectedRoute exact path="/me/update/info" component={EditProfile} />
          <ProtectedRoute exact path="/me/update/address" component={EditAddress} />
          <ProtectedRoute exact path="/success" component={Success} />
+         <ProtectedRoute exact path="/successOrder" component={SuccessOrder} />
          <ProtectedRoute exact path="/orders" component={MyOrder} />
          <ProtectedRoute exact path="/order/:id" component={MyOrderDetails} />
          <ProtectedRoute isAdmin={true} exact path="/dashboard" component={Dashboard} />

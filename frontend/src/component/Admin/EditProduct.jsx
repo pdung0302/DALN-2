@@ -122,7 +122,6 @@ const UpdateProduct = ({ history, match }) => {
    };
 
   const productId = match.params.id;
-  console.log(product.images)
   useEffect(() => {
     if (product && product._id !== productId) {
       dispatch(getProductDetails(productId));

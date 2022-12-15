@@ -55,7 +55,6 @@ const Shipping = ({ history }) => {
    
   };
  
- console.log(user)
 
   return (
     <>
