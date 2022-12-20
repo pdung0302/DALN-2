@@ -21,7 +21,6 @@ const ConfirmOrder = ({ history }) => {
   const { user } = useSelector((state) => state.user);
   const [noteBuy, setNoteBuy] = useState(" ");
 
-
   let productPrice = cartItems.reduce(
     (acc, item) => acc + item.quantity * item.price,
     0
@@ -166,7 +165,13 @@ const ConfirmOrder = ({ history }) => {
 
             <button onClick={proceedToPayment}>Tiến hành thanh toán</button>
             <div className="orderSummaryTotal"></div>
-            <button onClick={paymentAtHome}>Thanh toán khi nhận hàng</button>
+            {totalPrice && totalPrice > 500000 ? ( <p style={{fontSize:"1.2vmax"}}>Không áp dụng <b>thanh toán khi nhận hàng</b> đối với đơn hàng có tổng giá trị lớn hơn <b>500.000VND</b> </p>) : (<>
+              <button onClick={paymentAtHome}>Thanh toán khi nhận hàng</button>
+             
+              </>
+             
+            )}
+            {/* <button onClick={paymentAtHome}>Thanh toán khi nhận hàng</button> */}
           </div>
         </div>
       </div>
