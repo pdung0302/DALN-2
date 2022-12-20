@@ -8,36 +8,43 @@ import ListAltIcon from "@material-ui/icons/ListAlt";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import PeopleIcon from "@material-ui/icons/People";
 import RateReviewIcon from "@material-ui/icons/RateReview";
-import logo from "../../Assets/logo.webp"
-import AccountBalanceWalletOutlinedIcon from '@material-ui/icons/AccountBalanceWalletOutlined';
+import logo from "../../Assets/logo.webp";
+import AccountBalanceWalletOutlinedIcon from "@material-ui/icons/AccountBalanceWalletOutlined";
 
 const Sidebar = () => {
-  
-  const button = () =>{
+  const button = () => {
     let items = document.querySelectorAll(".Dashboard__item");
-   
-}
+  };
 
   return (
     <div className="sidebar">
       <Link to="/">
-        <img src={logo} alt="Ecommerce" 
-        />
+        <img src={logo} alt="Ecommerce" />
       </Link>
       <Link to="/dashboard">
         <p className="Dashboard__item" onClick={button}>
           <DashboardIcon /> Dashboard
         </p>
       </Link>
-          <Link to="/admin/products">
-              <p className="Dashboard__item"><PostAddIcon /> Tất cả sản phẩm</p>
-          </Link>
+      <Link to="/admin/products">
+        <p className="Dashboard__item">
+          <PostAddIcon /> Tất cả sản phẩm
+        </p>
+      </Link>
 
-          <Link to="/admin/product">
-             <p><AddIcon />Thêm sản phẩm</p>
-          </Link>
+      <Link to="/admin/product">
+        <p>
+          <AddIcon />
+          Thêm sản phẩm
+        </p>
+      </Link>
+      <Link to="/admin/proposal">
+        <p>
+          <RateReviewIcon />
+          Đề xuất nhập hàng
+        </p>
+      </Link>
 
-         
       <Link to="/admin/orders">
         <p>
           <ListAltIcon />
@@ -55,9 +62,12 @@ const Sidebar = () => {
           Quản lý đánh giá
         </p>
       </Link>
-      
-      <a href="https://dashboard.stripe.com/test/dashboard" ><p><AccountBalanceWalletOutlinedIcon /> Quản lý ví</p></a>
-     
+
+      <a href="https://dashboard.stripe.com/test/dashboard">
+        <p>
+          <AccountBalanceWalletOutlinedIcon /> Quản lý ví
+        </p>
+      </a>
     </div>
   );
 };

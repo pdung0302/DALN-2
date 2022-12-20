@@ -47,6 +47,7 @@ import ForgotPassword from "../../frontend/src/component/user/ForgotPassword";
 import ResetPassword from "../../frontend/src/component/user/ResetPassword";
 import Notfound from "../../frontend/src/more/Notfound";
 import EditAddress from './component/user/EditAddress';
+import ProposalImportPrduct from './component/Admin/ProposalImportProduct';
 
 
 
@@ -122,6 +123,7 @@ function App() {
          <ProtectedRoute isAdmin={true} exact path="/admin/users" component={AllUsers} />
          <ProtectedRoute isAdmin={true} exact path="/admin/user/:id" component={UpdateUser} />
          <ProtectedRoute isAdmin={true} exact path="/admin/reviews" component={AllReviews} />
+         <ProtectedRoute isAdmin={true} exact path="/admin/proposal" component={ProposalImportPrduct} />
         
 
          <Route component={

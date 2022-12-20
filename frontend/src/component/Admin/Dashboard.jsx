@@ -32,7 +32,15 @@ const Dashboard = () => {
   const { users } = useSelector((state) => state.allUsers);
 
   let outOfStock = 0;
+  let canNhapHang = 0;
   
+  products &&
+  products.forEach((item) => {
+    if (item.Stock < 30 ) {
+      canNhapHang += 1;
+    }
+  });
+
 
   products &&
     products.forEach((item) => {
@@ -111,6 +119,13 @@ const Dashboard = () => {
                 <Link to="/admin/products">
                   <p>Sản phẩm hết hàng</p>
                   <p>{products &&  outOfStock}</p>
+                </Link>
+                
+              </div>
+              <div className="dashboardSummaryBox2">
+              <Link to="/admin/proposal">
+                  <p>Sản phẩm cần nhập hàng:</p>
+                  <p>{products &&  canNhapHang}</p>
                 </Link>
               </div>
             </div>
