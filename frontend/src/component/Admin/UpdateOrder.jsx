@@ -238,16 +238,16 @@ const UpdateOrder = ({ history, match }) => {
                         </>
                       )}
                       {order.orderStatus === "Xác nhận đơn hàng" && (
-                        <option value="Đang giao hàng">Giao hàng</option>
-                      )}
-                      {order.orderStatus === "Xác nhận đơn hàng" && (
-                        <option value="Đơn hàng đã đưa đến bưu cục">
-                          Kiện hàng đã đến bộ phận vận chuyển
-                        </option>
+                        <option value="Đơn hàng đã đưa đến bưu cục">Đơn hàng đã đưa đến bưu cục vận chuyển</option>
                       )}
                       {order.orderStatus === "Đơn hàng đã đưa đến bưu cục" && (
-                        <option value="Đang giao hàng">Đang giao hàng</option>
+                        <option value="Đang giao hàng">
+                          Đang giao hàng
+                        </option>
                       )}
+                      {/* {order.orderStatus === "Đơn hàng đã đưa đến bưu cục" && (
+                        <option value="Đang giao hàng">Đang giao hàng</option>
+                      )} */}
 
                       {order.orderStatus === "Đang giao hàng" && (
                         <option value="Đã giao hàng">Đã giao hàng</option>

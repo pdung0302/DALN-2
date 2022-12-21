@@ -19,6 +19,8 @@ import IncomeChart from "./Chart/IncomeChart.jsx";
 import OderChart from "./Chart/OderChart.jsx";
 import ProductSell from "./Chart/ProductSell.jsx";
 import MinProduct from "./Chart/MinProduct.jsx";
+import OrderMonth from "./Chart/OrderMonth.jsx";
+import { ToastContainer, toast } from "react-toastify";
 
 
 
@@ -50,6 +52,9 @@ const Dashboard = () => {
     });
 
   useEffect(() => {
+    if (canNhapHang > 0){
+      toast.warning("Có sản phẩm sắp hết hàng!! Quản lý nhớ chú ý việc nhập hàng sớm nhất.");
+    }
     dispatch(getAdminProduct());
     dispatch(getAllOrders());
     dispatch(getAllUsers());
@@ -58,20 +63,25 @@ const Dashboard = () => {
   let totalAmount = 0;
   orders &&
     orders.forEach((item) => {
-      totalAmount += item.totalPrice;
+      if(item.orderStatus !== "Hủy đơn hàng" && item.paymentMethod !== "Thanh toán khi nhận hàng !"){
+        totalAmount += item.totalPrice;
+      } else if(item.paymentMethod === "Thanh toán khi nhận hàng !" && item.orderStatus === "Đã giao hàng"){
+        totalAmount += item.totalPrice;
+      }
+      
     });
 
-  const lineState = {
-    labels: ["Initial Amount", "Amount Earned"],
-    datasets: [
-      {
-        label: "TỔNG THU NHẬP",
-        backgroundColor: ["#42c2e2"],
-        hoverBackgroundColor: ["#3BB77E"],
-        data: [0, totalAmount],
-      },
-    ],
-  };
+  // const lineState = {
+  //   labels: ["Initial Amount", "Amount Earned"],
+  //   datasets: [
+  //     {
+  //       label: "TỔNG THU NHẬP",
+  //       backgroundColor: ["#42c2e2"],
+  //       hoverBackgroundColor: ["#3BB77E"],
+  //       data: [0, totalAmount],
+  //     },
+  //   ],
+  // };
 
   const doughnutState = {
     labels: ["Hết hàng", "Còn hàng"],
@@ -138,6 +148,10 @@ const Dashboard = () => {
               {/* <Line data={lineState} /> */}
               <OderChart />
             </div>
+            <div className="lineChart">
+              {/* <Line data={lineState} /> */}
+              <OrderMonth />
+            </div>
 
             <div className="doughnutChart">
               <h1 style={{textAlign:"center"}}>Biểu đồ cơ cấu sản phẩm</h1>
@@ -158,7 +172,19 @@ const Dashboard = () => {
           </div>
         </div>
       )}
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
+    
   );
 };
 export default Dashboard;
