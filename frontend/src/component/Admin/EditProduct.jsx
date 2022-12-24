@@ -43,7 +43,7 @@ const UpdateProduct = ({ history, match }) => {
   const [oldImages, setOldImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
 
-  const [supplier, setSupplier] = useState("Chưa cập nhật...");
+  // const [supplier, setSupplier] = useState("Chưa cập nhật...");
 
   const categories = [
     "Áo khoác",
@@ -135,7 +135,7 @@ const UpdateProduct = ({ history, match }) => {
       setOldImages(product.images);
       setSizeList(product.sizes);
       setColorList(product.color);
-      setSupplier(product.supplier);
+      // setSupplier(product.supplier);
     }
     if (error) {
       toast.error(error);
@@ -177,7 +177,7 @@ const UpdateProduct = ({ history, match }) => {
     myForm.set("Stock", Stock);
     myForm.append("sizes", JSON.stringify(sizeList));
     myForm.append("color", JSON.stringify(colorList));
-    myForm.set("supplier", supplier);
+    // myForm.set("supplier", supplier);
 
 
     images.forEach((image) => {
@@ -278,7 +278,7 @@ const UpdateProduct = ({ history, match }) => {
                 ))}
               </select>
             </div>
-            <div>
+            {/* <div>
               <Creator />
               <input
                 type="string"
@@ -287,7 +287,7 @@ const UpdateProduct = ({ history, match }) => {
                 onChange={(e) => setSupplier(e.target.value)}
                 value={supplier}
               />
-            </div>
+            </div> */}
 
             <div>
               <StorageIcon />

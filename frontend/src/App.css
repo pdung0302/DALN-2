@@ -182,6 +182,7 @@ label.MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLab
 }
 .dashboard{
   overflow: visible!important;
+  
 }
 label.MuiRating-label {
   margin-top: .5vmax;

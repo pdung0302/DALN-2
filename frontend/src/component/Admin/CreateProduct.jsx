@@ -33,7 +33,7 @@ const CreateProduct = ({ history }) => {
   const [offerPrice, setOfferPrice] = useState("");
   const [images, setImages] = useState([]);
   const [imagesPreview, setImagesPreview] = useState([]);
-  const [supplier, setSupplier] = useState("Chưa cập nhật...");
+  // const [supplier, setSupplier] = useState("Chưa cập nhật...");
 
 
   const categories = [
@@ -150,7 +150,7 @@ const CreateProduct = ({ history }) => {
     myForm.set("Stock", Stock);
     myForm.append("sizes", JSON.stringify(sizeList));
     myForm.append("color", JSON.stringify(colorList));
-    myForm.set("supplier", supplier);
+    // myForm.set("supplier", supplier);
 
     images.forEach((image) => {
       myForm.append("images", image);
@@ -294,7 +294,7 @@ const CreateProduct = ({ history }) => {
                 </div>
               )}
             </div>
-            <div>
+            {/* <div>
               <Creator />
               <input
                 type="string"
@@ -302,7 +302,7 @@ const CreateProduct = ({ history }) => {
               
                 onChange={(e) => setSupplier(e.target.value)}
               />
-            </div>
+            </div> */}
             <div className="description">
               {/* <DescriptionIcon />
               <textarea
@@ -312,7 +312,7 @@ const CreateProduct = ({ history }) => {
                 cols="30"
                 rows="1"
               ></textarea> */}
-              <ReactQuill theme="snow" id="description" value={description} onChange={setDescription}  placeholder="Description..." />
+              <ReactQuill theme="snow" id="description" value={description} onChange={setDescription}  placeholder="Mô tả sản phẩm..." />
             </div>
             <Button
               id="createProductBtn"

@@ -48,6 +48,7 @@ import ResetPassword from "../../frontend/src/component/user/ResetPassword";
 import Notfound from "../../frontend/src/more/Notfound";
 import EditAddress from './component/user/EditAddress';
 import ProposalImportPrduct from './component/Admin/ProposalImportProduct';
+import SlowRatings from './component/Admin/SlowRatings';
 
 
 
@@ -113,7 +114,7 @@ function App() {
          <ProtectedRoute exact path="/success" component={Success} />
          <ProtectedRoute exact path="/successOrder" component={SuccessOrder} />
          <ProtectedRoute exact path="/orders" component={MyOrder} />
-         <ProtectedRoute exact path="/order/:id" component={MyOrderDetails} />
+         <ProtectedRoute exact path="/order/:id" component={MyOrderDetails} /> 
          <ProtectedRoute isAdmin={true} exact path="/dashboard" component={Dashboard} />
          <ProtectedRoute isAdmin={true} exact path="/admin/product" component={CreateProduct} />
          <ProtectedRoute isAdmin={true} exact path="/admin/products" component={AllProducts} />
@@ -124,6 +125,7 @@ function App() {
          <ProtectedRoute isAdmin={true} exact path="/admin/user/:id" component={UpdateUser} />
          <ProtectedRoute isAdmin={true} exact path="/admin/reviews" component={AllReviews} />
          <ProtectedRoute isAdmin={true} exact path="/admin/proposal" component={ProposalImportPrduct} />
+         <ProtectedRoute isAdmin={true} exact path="/admin/lowratings" component={SlowRatings} />
         
 
          <Route component={

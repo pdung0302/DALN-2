@@ -45,8 +45,8 @@
     text-align: center;
     background-color: rgb(255, 233, 174);
     text-decoration: none;
-    padding: 1.5rem;
-    width: 15vmax;
+    padding: 1.3rem;
+    width: 13vmax;
     height: 10vmax;
     margin: 2rem;
     border-radius: 30%;
@@ -54,19 +54,20 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    font-weight: 550;
+    font-weight: 500;
   }
-  
+
+
   .dashboardSummaryBox2 > a:first-child {
     background-color:#3BB77E;
     color: rgb(255, 255, 255);
-    font-weight: 550;
+    font-weight: 500;
   }
   
   .dashboardSummaryBox2 > a:last-child {
     background-color: rgb(51, 51, 51);
     color: rgb(255, 255, 255);
-    font-weight: 550;
+    font-weight: 500;
   }
   
   .lineChart {

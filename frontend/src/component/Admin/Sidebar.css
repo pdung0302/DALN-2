@@ -5,10 +5,10 @@
     left: 0;
     display: flex;
     flex-direction: column;
-    overflow: auto;
+    overflow: hidden;
     height: 200vh;
     min-width: 15vw;
-  
+  position: relative;
   }
   
   .sidebar > a:first-child {

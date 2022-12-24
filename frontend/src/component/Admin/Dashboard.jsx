@@ -35,15 +35,21 @@ const Dashboard = () => {
 
   let outOfStock = 0;
   let canNhapHang = 0;
+  let RatingSlow = 0;
   
+  products &&
+  products.forEach((item) => {
+    if (item.ratings > 0 && item.ratings <= 3 ) {
+      RatingSlow += 1;
+    }
+  });
+
   products &&
   products.forEach((item) => {
     if (item.Stock < 30 ) {
       canNhapHang += 1;
     }
   });
-
-
   products &&
     products.forEach((item) => {
       if (item.Stock === 0) {
@@ -136,6 +142,11 @@ const Dashboard = () => {
               <Link to="/admin/proposal">
                   <p>Sản phẩm cần nhập hàng:</p>
                   <p>{products &&  canNhapHang}</p>
+                </Link>
+                <Link to="/admin/lowratings" style={{backgroundColor:"#da0424e2"}}>
+                  <p>Cảnh báo sản phẩm:</p>
+                  <p>{products &&  RatingSlow}</p>
+                  
                 </Link>
               </div>
             </div>

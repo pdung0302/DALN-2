@@ -57,32 +57,32 @@ const columns = [
       field: "name",
       headerName: "Tên",
       minWidth: 350,
-      flex: 0.4,
+      flex: 0.2,
     },
     {
       field: "stock",
       headerName: "Số lượng",
       type: "number",
       minWidth: 190,
-      flex: 0.3,
+      flex: 0.1,
     },
-    {
-      field: "supplier",
-      headerName: "Nhà cung cấp",
-      minWidth: 200,
-      flex: 0.4,
-    },
+    // {
+    //   field: "supplier",
+    //   headerName: "Nhà cung cấp",
+    //   minWidth: 200,
+    //   flex: 0.4,
+    // },
     {
       field: "price",
       headerName: "Giá",
       type: "number",
       minWidth: 270,
-      flex: 0.2,
+      flex: 0.1,
     },
 
     {
       field: "actions",
-      flex: 0.3,
+      flex: 0.1,
       headerName: "Tùy chọn",
       minWidth: 150,
       type: "number",
@@ -118,7 +118,7 @@ const columns = [
       rows.push({
         id: item._id, 
         stock: item.Stock,
-        supplier: item.supplier,
+        // supplier: item.supplier,
         price: item.price,
         name: item.name,
       });

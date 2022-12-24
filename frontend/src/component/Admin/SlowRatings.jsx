@@ -16,10 +16,9 @@ import VisibilityOutlinedIcon from '@material-ui/icons/VisibilityOutlined';
 import SideBar from "./Sidebar";
 import { ToastContainer, toast } from 'react-toastify';
 import { DELETE_PRODUCT_RESET } from "../../constans/ProductConstans";
-import ProductSell from "./Chart/ProductSell.jsx";
 
 
-const ProposalImportPrduct = ({history}) => {
+const SlowRatings = ({history}) => {
 
 const dispatch = useDispatch();
 
@@ -57,7 +56,7 @@ const columns = [
     {
       field: "name",
       headerName: "Tên",
-      minWidth: 350,
+      minWidth: 300,
       flex: 0.2,
     },
     {
@@ -72,12 +71,12 @@ const columns = [
       headerName: "Giá",
       type: "number",
       minWidth: 270,
-      flex: 0.1,
+      flex: 0.2,
     },
 
     {
       field: "actions",
-      flex: 0.1,
+      flex: 0.2,
       headerName: "Tùy chọn",
       minWidth: 150,
       type: "number",
@@ -110,7 +109,7 @@ const columns = [
 
   products &&
     products.forEach((item) => {
-        if (item.Stock < 30 ) {
+        if (item.ratings > 0 && item.ratings <= 3 ) {
             rows.push({
                 id: item._id, 
                 stock: item.Stock,
@@ -118,7 +117,7 @@ const columns = [
                 name: item.name,
               });
           }
-      });
+    });
 
     return (
        <Fragment>
@@ -127,11 +126,8 @@ const columns = [
       <div className="dashboard">
         <SideBar />
         <div className="productListContainer">
-          <h1 id="productListHeading">ĐỀ XUẤT SẢN PHẨM CẦN NHẬP HÀNG</h1>
-          <div className="lineChart">
-              {/* <Line data={lineState} /> */}
-              <ProductSell />
-            </div>
+          <h1 id="productListHeading">Danh sách sản phẩm có đánh giá thấp</h1>
+
           <DataGrid
             rows={rows}
             columns={columns}
@@ -157,4 +153,4 @@ const columns = [
     )
 }
 
-export default ProposalImportPrduct
+export default SlowRatings
