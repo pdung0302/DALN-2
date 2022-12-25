@@ -82,7 +82,7 @@ const Profile = ({ history }) => {
                   >
                     Số điện thoại:
                   </h4>
-                  <p>0{user.phoneNumber}</p>
+                  <p>(+84) {user.phoneNumber}</p>
                 </div>
                 <div className="info">
                   <h4

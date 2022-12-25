@@ -37,17 +37,17 @@ const userSchema = new mongoose.Schema({
   },
   address: {
     type: String,
-    default: " ",
-    required: true,
+   
+   
   },
   province: {
     type: String,
-    default: " ",
-    required: true,
+   
+
   },
-  district: { type: String, default: " " },
-  wards: { type: String, default: " " },
-  phoneNumber: { type: Number,default: " " },
+  district: { type: String},
+  wards: { type: String},
+  phoneNumber: { type: Number},
   role: {
     type: String,
     default: "user",
