@@ -21,8 +21,8 @@ import ProductSell from "./Chart/ProductSell.jsx";
 import MinProduct from "./Chart/MinProduct.jsx";
 import OrderMonth from "./Chart/OrderMonth.jsx";
 import { ToastContainer, toast } from "react-toastify";
-
-
+import SellInMonth from "./Chart/SellInMonth.jsx";
+import UserBuyMost from "./Chart/UserBuyMost.jsx";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -36,20 +36,20 @@ const Dashboard = () => {
   let outOfStock = 0;
   let canNhapHang = 0;
   let RatingSlow = 0;
-  
-  products &&
-  products.forEach((item) => {
-    if (item.ratings > 0 && item.ratings <= 3 ) {
-      RatingSlow += 1;
-    }
-  });
 
   products &&
-  products.forEach((item) => {
-    if (item.Stock < 30 ) {
-      canNhapHang += 1;
-    }
-  });
+    products.forEach((item) => {
+      if (item.ratings > 0 && item.ratings <= 3) {
+        RatingSlow += 1;
+      }
+    });
+
+  products &&
+    products.forEach((item) => {
+      if (item.Stock < 30) {
+        canNhapHang += 1;
+      }
+    });
   products &&
     products.forEach((item) => {
       if (item.Stock === 0) {
@@ -58,8 +58,10 @@ const Dashboard = () => {
     });
 
   useEffect(() => {
-    if (canNhapHang > 0){
-      toast.warning("Có sản phẩm sắp hết hàng!! Quản lý nhớ chú ý việc nhập hàng sớm nhất.");
+    if (canNhapHang > 0) {
+      toast.warning(
+        "Có sản phẩm sắp hết hàng!! Quản lý nhớ chú ý việc nhập hàng sớm nhất."
+      );
     }
     dispatch(getAdminProduct());
     dispatch(getAllOrders());
@@ -69,12 +71,17 @@ const Dashboard = () => {
   let totalAmount = 0;
   orders &&
     orders.forEach((item) => {
-      if(item.orderStatus !== "Hủy đơn hàng" && item.paymentMethod !== "Thanh toán khi nhận hàng !"){
+      if (
+        item.orderStatus !== "Hủy đơn hàng" &&
+        item.paymentMethod !== "Thanh toán khi nhận hàng !"
+      ) {
         totalAmount += item.totalPrice;
-      } else if(item.paymentMethod === "Thanh toán khi nhận hàng !" && item.orderStatus === "Đã giao hàng"){
+      } else if (
+        item.paymentMethod === "Thanh toán khi nhận hàng !" &&
+        item.orderStatus === "Đã giao hàng"
+      ) {
         totalAmount += item.totalPrice;
       }
-      
     });
 
   // const lineState = {
@@ -134,51 +141,61 @@ const Dashboard = () => {
                 </Link>
                 <Link to="/admin/products">
                   <p>Sản phẩm hết hàng</p>
-                  <p>{products &&  outOfStock}</p>
+                  <p>{products && outOfStock}</p>
                 </Link>
-                
               </div>
               <div className="dashboardSummaryBox2">
-              <Link to="/admin/proposal">
+                <Link to="/admin/proposal">
                   <p>Sản phẩm cần nhập hàng:</p>
-                  <p>{products &&  canNhapHang}</p>
+                  <p>{products && canNhapHang}</p>
                 </Link>
-                <Link to="/admin/lowratings" style={{backgroundColor:"#da0424e2"}}>
+                <Link
+                  to="/admin/lowratings"
+                  style={{ backgroundColor: "#da0424e2" }}
+                >
                   <p>Cảnh báo sản phẩm:</p>
-                  <p>{products &&  RatingSlow}</p>
-                  
+                  <p>{products && RatingSlow}</p>
                 </Link>
               </div>
+            </div>
+            <div className="lineChart">
+              {/* <Line data={lineState} /> */}
+              <SellInMonth />
+            </div>
+            <div className="lineChart">
+              {/* <Line data={lineState} /> */}
+              <OderChart />
             </div>
 
             <div className="lineChart">
               {/* <Line data={lineState} /> */}
               <IncomeChart />
             </div>
-            <div className="lineChart">
-              {/* <Line data={lineState} /> */}
-              <OderChart />
-            </div>
+
             <div className="lineChart">
               {/* <Line data={lineState} /> */}
               <OrderMonth />
             </div>
 
-            <div className="doughnutChart">
+            {/* <div className="doughnutChart">
               <h1 style={{textAlign:"center"}}>Biểu đồ cơ cấu sản phẩm</h1>
               <Doughnut data={doughnutState} />
-            </div>
+            </div> */}
             <div className="lineChart">
               {/* <Line data={lineState} /> */}
               <ProductSell />
             </div>
             <div className="lineChart">
               {/* <Line data={lineState} /> */}
+              <UserBuyMost />
+            </div>
+            <div className="lineChart">
+              {/* <Line data={lineState} /> */}
               <MinProduct />
             </div>
             <div className="ContainerChart">
-            <ProductChart />
-            <UserChart />
+              <ProductChart />
+              <UserChart />
             </div>
           </div>
         </div>
@@ -195,7 +212,6 @@ const Dashboard = () => {
         pauseOnHover
       />
     </>
-    
   );
 };
 export default Dashboard;

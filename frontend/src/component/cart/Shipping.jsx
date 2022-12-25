@@ -75,7 +75,7 @@ const Shipping = ({ history }) => {
               <HomeIcon />
               <input
                 type="text"
-                placeholder="Address"
+                placeholder="Số nhà, đường, xóm"
                 required
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
@@ -88,7 +88,7 @@ const Shipping = ({ history }) => {
                 type="number"
                 placeholder="Phone Number"
                 required
-                value={`0`+phoneNo}
+                value={phoneNo}
                 onChange={(e) => setPhoneNo(e.target.value)}
                 size="10"
               />
@@ -97,7 +97,7 @@ const Shipping = ({ history }) => {
               <HomeIcon />
               <input
                 type="text"
-                placeholder="Tỉnh"
+                placeholder="Tỉnh, thành phố"
                 required
                 value={province}
                 onChange={(e) => setProvince(e.target.value)}
@@ -117,7 +117,7 @@ const Shipping = ({ history }) => {
               <HomeIcon />
               <input
                 type="text"
-                placeholder="Xã"
+                placeholder="Xã, phường"
                 required
                 value={wards}
                 onChange={(e) => setWards(e.target.value)}

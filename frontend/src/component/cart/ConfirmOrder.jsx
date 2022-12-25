@@ -88,7 +88,7 @@ const ConfirmOrder = ({ history }) => {
               </div>
               <div>
                 <p>Số điện thoại:</p>
-                <span>0{shippingInfo.phoneNo}</span>
+                <span>(+84) {shippingInfo.phoneNo}</span>
               </div>
               <div>
                 <p>Địa chỉ:</p>
