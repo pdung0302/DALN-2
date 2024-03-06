@@ -62,7 +62,7 @@ const Dashboard = () => {
   useEffect(() => {
     if (canNhapHang > 0) {
       toast.warning(
-        "Có sản phẩm sắp hết hàng!! Quản lý nhớ chú ý việc nhập hàng sớm nhất."
+        "Có sản phẩm sắp hết hàng!! Quản lý nhớ chú ý việc nhập hàng sớm"
       );
     }
     dispatch(getAdminProduct());
