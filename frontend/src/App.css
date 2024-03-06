@@ -31,7 +31,7 @@ iframe {
 .black{
   color: #000;
 }
-h1,h2,h3,h4,h5,h6,span,p,strong{
+h1,h2,h4,h6,span,p,strong{
   font-family: sans-serif;
 }
 /* div {overflow: hidden;} */
@@ -89,9 +89,9 @@ strong{
   transition: .4s all ease;
   cursor: pointer;
 }
-strong:hover{
+/* strong:hover{
   color: tomato;
-}
+} */
 h6{
   font-weight: 600;
   opacity: .7;
@@ -114,20 +114,21 @@ h1{
   font-size: 2vmax;
 }
 h5{
-  font-size: 1.8vmax;
+  font-size: 20px;
   padding: 8px 10px;
 }
 h3{
   font-weight: 600;
   opacity: 1;
-  font-size: 1.3vmax;
   padding: 8px 10px;
+  font-size: 20px;
   color: #000;
   transition: .4s all ease;
 }
 h3:hover{
-  color: tomato;
   cursor: pointer;
+  text-decoration: underline;
+
 }
 .pz__15{
   padding: 15px 0px;

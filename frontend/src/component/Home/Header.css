@@ -1,16 +1,5 @@
-.inputBox > span{
-    font-family: "Roboto";
-    animation: sliding 14s linear infinite;
-    display: block;
-}
-@keyframes sliding{
-    0%{
-      transform: translateX(160%);
-    }
-    100%{
-      transform: translateX(-100%);
-    }
-  }
+  
+  
   .dropbtn {
     background-color: rgba(227, 22, 22, 0);
     border-radius: 50%;
@@ -26,7 +15,7 @@
     display: inline-block;
     
   }
-  
+
   /* Dropdown Content (Hidden by Default) */
   .dropdown-content {
     display: none;
@@ -86,4 +75,19 @@
   justify-content: center;
   align-Items:center;
   margin-top: .6vmax;
+}
+
+@font-face{
+  font-family: Ojuju;
+  src: url(../font/Ojuju-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: QuickSand;
+  src: url(../font/Quicksand-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: Oswald;
+  src: url(../font/Oswald-VariableFont_wght.ttf);
 }

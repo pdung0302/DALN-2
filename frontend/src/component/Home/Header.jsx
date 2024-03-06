@@ -1,9 +1,9 @@
+
 // eslint-disable-next-line
 import React, { useRef } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import logo from "../../Assets/logo.webp";
 import PersonIcon from "@material-ui/icons/Person";
 import { logout } from "../../actions/userAction";
 import { ToastContainer, toast } from "react-toastify";
@@ -16,6 +16,8 @@ import HeartIcon from "@material-ui/icons/FavoriteBorder";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import Support from "@material-ui/icons/ReportProblem";
 import DashboardIcon from "@material-ui/icons/Dashboard";
+import { red } from "@material-ui/core/colors";
+
 
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
@@ -133,17 +135,6 @@ const Header = () => {
         {/* Topbar Left */}
         <div className="logo pxy__10" >
           <Link to="/">
-            <img
-              src={logo}
-              alt=""
-              className="logo"
-              style={{
-                width: "150px",
-                height: "100px",
-                objectFit: "contain",
-                cursor: "pointer",
-              }}
-            /><div className="textLogo"><h1>KIANA</h1></div>
             
           </Link>
         </div>
@@ -157,29 +148,6 @@ const Header = () => {
             
           }}
         >
-          <div
-            className="inputBox"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              height: "30px",
-              width: "100%",
-              background: "#0076dead",
-              overflow: "hidden",
-              borderRadius:"5px",
-             
-            }}
-          >
-            <span
-              style={{
-                color: "#fff",
-              }}
-            >
-              Chào mừng đến với Kiana shop...Miễn phí phí ship đối với đơn hàng
-              trên 200.000đ!!!! 
-            </span>
-          
-          </div>
         </div>
 
         <div
@@ -188,36 +156,6 @@ const Header = () => {
             margin: "0px 10px",
           }}
         >
-          <div>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="25"
-              height="25"
-              fill="currentColor"
-              class="bi bi-envelope"
-              viewBox="0 0 16 16"
-              style={{
-                color: "#53C08E",
-              }}
-            >
-              <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
-            </svg>
-          </div>
-          <span
-            style={{
-              fontFamily: "sans-serif",
-              fontSize: "1rem",
-            }}
-          >
-            <strong
-              style={{
-                padding: "0px 5px",
-              }}
-            >
-              Email:
-            </strong>{" "}
-            army24062000@gmail.com
-          </span>
         </div>
       </div>
       {/* Header Navbar */}
@@ -225,12 +163,23 @@ const Header = () => {
         <div
           className="navigation"
           style={{
+            display:"flex",
             padding: "0px 50px",
+            alignItems:"center",
           }}
         >
+          <span style={{
+            fontFamily:"Ojuju",
+            cursor:"pointer",
+            fontWeight:"bolder",
+            paddingRight:"30px",
+            fontSize:30,
+          }}>KIANA</span>
           <ul
             style={{
-              fontFamily: "sans-serif",
+              fontFamily: "Oswald",
+              fontWeight:"bold",
+              fontSize:20,
               cursor: "pointer",
               display: "flex",
               listStyle: "none",
@@ -413,3 +362,4 @@ const Header = () => {
 };
 
 export default Header;
+

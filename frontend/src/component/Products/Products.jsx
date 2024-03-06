@@ -159,7 +159,7 @@ const Products = ({ match }) => {
                   flex: ".177",
                   display:"flex",
                   flexDirection:"column",
-                 
+                  height:"fit-content"
                 }}
               >
                 <Typography style={{ fontSize: "1.2vmax", padding: "5px", textAlign:"center" }}>
@@ -183,7 +183,7 @@ const Products = ({ match }) => {
                 </ul> */}
                 <button style={{borderLeft:"none", borderRight:"none",cursor:"pointer"  }} onClick={() => setCategory()}>
                   {" "}
-                  <Typography style={{ fontSize: "1.2vmax", padding: "5px" }}>
+                  <Typography style={{ fontSize: "1.2vmax", padding: "5px", textAlign:"left" }}>
                   +Tất cả
                   </Typography>
                 </button>
@@ -202,7 +202,7 @@ const Products = ({ match }) => {
                   </ul> */}
                   <button style={{borderLeft:"none", borderRight:"none", borderTop:"none"  }} onClick={handleOpenManGirl}>
                   {" "}
-                  <Typography style={{ fontSize: "1.2vmax", padding: "5px" }}>
+                  <Typography style={{ fontSize: "1.2vmax", padding: "5px", textAlign:"left" }}>
                   +Thời trang nam, nữ
                   </Typography>
                 </button>
@@ -223,7 +223,7 @@ const Products = ({ match }) => {
           
                 <button style={{borderLeft:"none", borderRight:"none", borderTop:"none"  }} onClick={handleOpenMan}>
                   {" "}
-                  <Typography style={{ fontSize: "1.2vmax", padding: "5px" }}>
+                  <Typography style={{ fontSize: "1.2vmax", padding: "5px", textAlign:"left" }}>
                   +Thời trang nam
                   </Typography>
                 </button>
@@ -244,7 +244,7 @@ const Products = ({ match }) => {
                
                 <button style={{ borderLeft:"none", borderRight:"none",borderTop:"none"}} onClick={handleOpenWoman}>
                   {" "}
-                  <Typography style={{ fontSize: "1.2vmax", padding: "5px" }}>
+                  <Typography style={{ fontSize: "1.2vmax", padding: "5px", textAlign:"left" }}>
                   +Thời trang nữ
                   </Typography>
                 </button>
@@ -265,7 +265,7 @@ const Products = ({ match }) => {
                
                <button style={{borderLeft:"none", borderRight:"none",borderTop:"none"}} onClick={handleOpenAccessory}>
                   {" "}
-                  <Typography style={{ fontSize: "1.2vmax", padding: "5px" }}>
+                  <Typography style={{ fontSize: "1.2vmax", padding: "5px", textAlign:"left" }}>
                  +Phụ kiện
                   </Typography>
                 </button>
@@ -286,7 +286,7 @@ const Products = ({ match }) => {
 
                 <button style={{borderLeft:"none", borderRight:"none",borderTop:"none"}} onClick={handleOpenColor}>
                   {" "}
-                  <Typography style={{ fontSize: "1.2vmax", padding: "5px" }}>
+                  <Typography style={{ fontSize: "1.2vmax", padding: "5px", textAlign:"left" }}>
                     +Tìm kiếm theo màu sắc
                   </Typography>
                 </button>
@@ -307,7 +307,7 @@ const Products = ({ match }) => {
 
 <button style={{borderLeft:"none", borderRight:"none",borderTop:"none"}} onClick={handleOpenSize}>
                   {" "}
-                  <Typography style={{ fontSize: "1.2vmax", padding: "5px" }}>
+                  <Typography style={{ fontSize: "1.2vmax", padding: "5px", textAlign:"left" }}>
                     +Tìm kiếm theo kích thước
                   </Typography>
                 </button>

@@ -10,6 +10,7 @@ import PeopleIcon from "@material-ui/icons/People";
 import RateReviewIcon from "@material-ui/icons/RateReview";
 import logo from "../../Assets/logo.webp";
 import AccountBalanceWalletOutlinedIcon from "@material-ui/icons/AccountBalanceWalletOutlined";
+import { colors } from "@material-ui/core";
 
 const Sidebar = () => {
   const button = () => {
@@ -18,53 +19,55 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar">
-      <Link to="/">
-        <img src={logo} alt="Ecommerce" />
+      <div className="title" style={{marginLeft:"20px"}}>
+        <Link to="/">
+        <h1 style={{color:"black", fontWeight:"bold", fontFamily:"Ojuju"}}>KIANA<strong style={{color:"red", fontFamily:"Ojuju"}}>ADMIN</strong></h1>
       </Link>
-      <Link to="/dashboard">
+      </div>
+      <Link to="/dashboard" style={{color:"black", fontFamily:"Oswald", fontWeight:"300"}}>
         <p className="Dashboard__item" onClick={button}>
           <DashboardIcon /> Dashboard
         </p>
       </Link>
-      <Link to="/admin/products">
+      <Link to="/admin/products" style={{color:"black", fontFamily:"Oswald", fontWeight:"300"}} >
         <p className="Dashboard__item">
           <PostAddIcon /> Tất cả sản phẩm
         </p>
       </Link>
 
-      <Link to="/admin/product">
+      <Link to="/admin/product" style={{color:"black", fontFamily:"Oswald", fontWeight:"300"}}>
         <p>
           <AddIcon />
           Thêm sản phẩm
         </p>
       </Link>
-      <Link to="/admin/proposal">
+      <Link to="/admin/proposal" style={{color:"black", fontFamily:"Oswald", fontWeight:"300"}}>
         <p>
           <RateReviewIcon />
           Đề xuất nhập hàng
         </p>
       </Link>
 
-      <Link to="/admin/orders">
+      <Link to="/admin/orders" style={{color:"black", fontFamily:"Oswald", fontWeight:"300"}}>
         <p>
           <ListAltIcon />
           Đơn hàng
         </p>
       </Link>
-      <Link to="/admin/users">
+      <Link to="/admin/users" style={{color:"black", fontFamily:"Oswald", fontWeight:"300"}}>
         <p>
           <PeopleIcon /> Tài khoản
         </p>
       </Link>
-      <Link to="/admin/reviews">
+      <Link to="/admin/reviews" style={{color:"black", fontFamily:"Oswald", fontWeight:"300"}}>
         <p>
           <RateReviewIcon />
           Quản lý đánh giá
         </p>
       </Link>
 
-      <a href="https://dashboard.stripe.com/test/dashboard">
-        <p>
+      <a href="https://dashboard.stripe.com/test/dashboard" style={{color:"black", fontFamily:"Oswald", fontWeight:"300"}}>
+        <p >
           <AccountBalanceWalletOutlinedIcon /> Quản lý ví
         </p>
       </a>
